@@ -1,24 +1,24 @@
-NAME		=	ConversionOfScalarTypes
-SRCS		=	main.cpp ScalarConverter.cpp colours.cpp
-HEADERS		=	ScalarConverter.hpp colours.hpp
-OBJS		=	$(SRCS:.cpp=.o)
-CPPFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
-CPP			=	c++
 
-all:		$(NAME)
+name = ScalarConversion
+cc = c++
+cflags = -Wall -Werror -Wextra -std=c++98
+src = main.cpp ScalarConverter.cpp
+obj = ${src:.cpp=.o}
 
-$(NAME):	$(OBJS)
-			$(CPP) $(CPPFLAGS) $(OBJS) -o $(NAME)
+all: ${name}
 
-%.o:		%.cpp $(HEADERS)
-			$(CPP) $(CPPFLAGS) -c $< -o $@
+${name}: ${obj}
+	${cc} ${cflags} ${obj} -o ${name}
+
+%.o: %.cpp
+	$(cc) $(cflags) $< -c -o $@
 
 clean:
-			rm -rf $(OBJS)
+	rm -f ${obj}
 
-fclean:		clean
-			rm -rf $(NAME)
+fclean: clean
+	rm -f ${name}
 
-re:			fclean all
+re:	fclean all
 
-.PHONY:	all clean fclean re
+.PHONY: all re clean fclean

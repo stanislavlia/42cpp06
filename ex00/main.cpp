@@ -1,17 +1,9 @@
-#include <iostream>
-#include <iomanip>
+#include "ScalarConverter.hpp"
 
-int main()
+int main( int argc, char **argv )
 {
-
-
-  int result = -5000;
-  unsigned short c = result;
-  std::cout << std::fixed;
-  std::cout << std::setprecision(5);
-  std::cout << result << std::endl;
-  std::cout << c << std::endl;
-  std::cout << sizeof(result) << std::endl;
-  std::cout << sizeof(c) << std::endl; 
-  return 0;
+	if (argc != 2)
+		return (1);
+	ScalarConverter::convert(argv[1]);
+	return (0);
 };
